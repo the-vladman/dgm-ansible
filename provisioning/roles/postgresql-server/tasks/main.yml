@@ -37,8 +37,8 @@
   sudo: true
  
 - name: Add PostgreSQL iptable rule
-  command: iptables -A INPUT -p tcp -s 0/0 --sport 1024:65535 -d 192.168.33.20 --dport 5432 -m state --state NEW,ESTABLISHED -j ACCEPT -m comment --comment "postgresql"
-  command: iptables -A OUTPUT -p tcp -s 192.168.33.20 --sport 5432 -d 0/0 --dport 1024:65535 -m state --state ESTABLISHED -j ACCEPT -m comment --comment "postgresql"
+  command: iptables -A INPUT -p tcp -s 0/0 --sport 1024:65535 -d {{ db.ip }} --dport {{ db.pg.port }} -m state --state NEW,ESTABLISHED -j ACCEPT -m comment --comment "postgresql"
+  command: iptables -A OUTPUT -p tcp -s {{ db.ip }} --sport {{ db.pg.port }} -d 0/0 --dport 1024:65535 -m state --state ESTABLISHED -j ACCEPT -m comment --comment "postgresql"
   sudo: true
   when: iptablesrules.stdout.find("postgresql") == -1
  
