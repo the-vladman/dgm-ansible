@@ -1,0 +1,9 @@
+---
+- hosts: storageservers
+  user: vagrant
+  sudo: true
+  vars:
+    locale: es_MX.UTF-8
+    language: es_MX:es
+  roles:
+    - nfs-server
