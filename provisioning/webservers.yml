@@ -16,4 +16,4 @@
     - configuration
     - disqus-extension
     - ckanext-harvest
-    #- mx
+    - mx
