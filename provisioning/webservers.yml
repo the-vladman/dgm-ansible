@@ -15,5 +15,5 @@
     - page-tracking-extension
     - configuration
     - disqus-extension
-    - ckanext-harvest
     - mx
+    - ckanext-harvest
