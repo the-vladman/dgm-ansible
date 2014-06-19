@@ -1,6 +1,6 @@
 ---
 - name: Copy mx theme
-  git: repo='https://github.com/okfn/ckanext-mx.git' dest=/usr/lib/ckanext-mx/
+  pip: name='git+https://github.com/mxabierto/ckanext-dgm.git#egg=ckanext-dgm' virtualenv=/usr/lib/ckan/default virtualenv_site_packages=no
 
 - name: Run script to change translations
-  shell: /usr/lib/ckanext-mx/bin/build-combined-ckan-mo.sh
+  shell: /usr/lib/ckan/default/src/ckanext-dgm/bin/build-combined-ckan-mo.sh
