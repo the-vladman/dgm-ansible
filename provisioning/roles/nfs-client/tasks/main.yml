@@ -1,0 +1,18 @@
+---
+- name: Install Required Packages
+  apt: pkg={{ item }} state=present update_cache=yes
+  with_items:
+    - nfs-common
+    
+- name: Create mount point
+  file: path=/mnt/nfs/home/storage state=directory
+  
+- name: Mount NFS directory
+  mount: name=/mnt/nfs/home/storage src=192.168.33.30:/home/storage fstype=nfs state=present
+  
+- name: Ensure NFS directory is mounted at boot time
+  lineinfile: dest=/etc/fstab
+              regexp=''
+              insertafter=EOF
+              line='192.168.33.30:/home/storage  /mnt/nfs/home/storage   nfs      rw,sync,hard,intr  0     0'
+              state=present

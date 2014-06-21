@@ -1,7 +1,12 @@
 # http://docs.ckan.org/en/latest/maintaining/configuration.html
 
+
 - name: Set max file upload size
   ini_file: dest=/etc/ckan/default/production.ini section=app:main option=ckan.max_resource_size value=1000
 
 - name: Set max image upload size
   ini_file: dest=/etc/ckan/default/production.ini section=app:main option=ckan.max_image_size value=10
+  
+- name: Grant privileges on DB
+  sudo_user: postgres
+  postgresql_privs: host={{db.ip}} database={{datastore_default}} roles={{ckan_readonlyuser}} privs=SELECT state=present objs=_table_metadata

@@ -10,6 +10,7 @@
   roles:
     - ckan-install
     - ckan-deploy
+    - nfs-client
     - file-store
     - spatial-extension
     - page-tracking-extension
@@ -17,3 +18,4 @@
     - disqus-extension
     - mx
     - ckanext-harvest
+
