@@ -1,6 +1,6 @@
-ckan-mxabierto
-==============
-Instalación de entorno de pruebas para CKAN
+dgm-ansible
+===========
+Ansible playbooks for CKAN instance at datos.gob.mx
 
 Instalación
 ==============
