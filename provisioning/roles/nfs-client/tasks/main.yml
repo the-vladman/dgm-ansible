@@ -5,14 +5,20 @@
     - nfs-common
     
 - name: Create mount point
-  file: path=/mnt/nfs/home/storage state=directory
+  file: path=/var/lib/ckan/default state=directory
   
 - name: Mount NFS directory
-  mount: name=/mnt/nfs/home/storage src=192.168.33.30:/home/storage fstype=nfs state=present
+  mount: name=/var/lib/ckan/default src=192.168.33.30:/mnt/disk fstype=nfs state=present
   
 - name: Ensure NFS directory is mounted at boot time
   lineinfile: dest=/etc/fstab
               regexp=''
               insertafter=EOF
-              line='192.168.33.30:/home/storage  /mnt/nfs/home/storage   nfs      rw,sync,hard,intr  0     0'
+              line='192.168.33.30:/mnt/disk   /var/lib/ckan/default   nfs   auto,noatime,nolock,bg,nfsvers=3,intr,tcp,actimeo=1800    0   0'
               state=present
+
+- name: Reload fstab mount points
+  command: mount -a
+
+- name: Change storage ownership
+  file: path=/var/lib/ckan/default state=directory owner=www-data group=www-data

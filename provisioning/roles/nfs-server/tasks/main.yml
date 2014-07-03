@@ -15,7 +15,7 @@
     - nfs-common
     
 - name: Create shared directory
-  file: path=/home/storage state=directory owner=nobody group=nogroup
+  file: path=/mnt/disk state=directory owner=root group=root
   
 - name: Create NFS exports
   copy: src=roles/nfs-server/files/exports dest=/etc/exports force=yes
