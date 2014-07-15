@@ -1,0 +1,24 @@
+---
+- name: Install chartbeat extension
+  pip: name='git+https://github.com/ckan/ckanext-googleanalytics.git#egg=ckanext-googleanalytics' virtualenv=/usr/lib/ckan/default virtualenv_site_packages=no
+
+- name: Setting Google Analytics ID
+  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=googleanalytics.id value=YOUR_GA_ID backup=yes
+  
+- name: Setting Google Analytics Account
+  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=googleanalytics.account value=YOUR_GA_ACCOUNT backup=yes
+  
+- name: Setting Google Analytics Username
+  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=googleanalytics.username value=YOUR_GA_USERNAME backup=yes
+
+- name: Setting Google Analytics Password
+  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=googleanalytics.password value=YOUR_GA_PASSWORD backup=yes
+
+- name: Setting Google Analytics Resource Prefix (Optional)
+  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=googleanalytics_resource_prefix value=/downloads/ backup=yes
+  
+- name: Setting Google Analytics Domain (Optional)
+  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=googleanalytics.domain value=auto backup=yes
+
+- name: Setting Google Analytics Track Events (Optional)
+  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=googleanalytics.track_events value=false backup=yes

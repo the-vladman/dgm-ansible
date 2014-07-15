@@ -16,5 +16,7 @@
     - configuration
     - disqus-extension
     - mx
+    - ckanext-googleanalytics
+    - ckanext-chartbeat
     - ckanext-harvest
 

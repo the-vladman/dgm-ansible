@@ -1,3 +1,5 @@
 ---
-- include: webservers.yml
-- include: dbservers.yml
+tasks:
+  - include: webservers.yml
+  - include: dbservers.yml
+  - inlcude: storageservers.yml

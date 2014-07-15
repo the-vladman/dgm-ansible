@@ -1,0 +1,9 @@
+---
+- name: Install chartbeat extension
+  pip: name='git+https://github.com/mxabierto/ckanext-chartbeat.git#egg=ckanext-chartbeat' virtualenv=/usr/lib/ckan/default virtualenv_site_packages=no
+
+- name: Setting Chartbeat ID
+  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=chartbeat.uid value=YOUR_CHARTBEAT_ID backup=yes
+  
+- name: Setting Chartbeat domain
+  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=chartbeat.domain value=YOUR_DOMAIN backup=yes
