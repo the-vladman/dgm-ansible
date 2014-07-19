@@ -3,22 +3,22 @@
   pip: name='git+https://github.com/ckan/ckanext-googleanalytics.git#egg=ckanext-googleanalytics' virtualenv=/usr/lib/ckan/default virtualenv_site_packages=no
 
 - name: Setting Google Analytics ID
-  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=googleanalytics.id value=YOUR_GA_ID backup=yes
+  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=googleanalytics.id value={{ googleanalytics_id }} backup=yes
   
 - name: Setting Google Analytics Account
-  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=googleanalytics.account value=YOUR_GA_ACCOUNT backup=yes
+  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=googleanalytics.account value={{ googleanalytics_account }} backup=yes
   
 - name: Setting Google Analytics Username
-  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=googleanalytics.username value=YOUR_GA_USERNAME backup=yes
+  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=googleanalytics.username value={{ googleanalytics_username }} backup=yes
 
 - name: Setting Google Analytics Password
-  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=googleanalytics.password value=YOUR_GA_PASSWORD backup=yes
+  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=googleanalytics.password value={{ googleanalytics_password }} backup=yes
 
 - name: Setting Google Analytics Resource Prefix (Optional)
-  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=googleanalytics_resource_prefix value=/downloads/ backup=yes
+  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=googleanalytics_resource_prefix value={{ googleanalytics_resource_prefix }} backup=yes
   
 - name: Setting Google Analytics Domain (Optional)
-  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=googleanalytics.domain value=auto backup=yes
+  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=googleanalytics.domain value={{ googleanalytics_domain }} backup=yes
 
 - name: Setting Google Analytics Track Events (Optional)
-  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=googleanalytics.track_events value=false backup=yes
+  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=googleanalytics.track_events value={{ googleanalytics_track_events }} backup=yes
