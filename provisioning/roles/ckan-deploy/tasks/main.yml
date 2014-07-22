@@ -1,6 +1,6 @@
 ---
 - name: Setup Production ini file
-  copy: src=production.ini dest=/etc/ckan/default/production.ini
+  template: src=roles/ckan-deploy/files/production.ini dest=/etc/ckan/default/production.ini
   
 - name: Install Required Packages
   apt: pkg={{ item }} state=present update_cache=yes
