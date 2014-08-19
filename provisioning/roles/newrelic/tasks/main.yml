@@ -1,0 +1,12 @@
+---
+- name: Install NewRelic agent
+  pip: name='newrelic' virtualenv=/usr/lib/ckan/default virtualenv_site_packages=no
+  
+- name: Copy NewRelic config file
+  template: src=roles/newrelic/files/newrelic.ini dest=/etc/ckan/default/newrelic.ini mode=0644
+  
+- name: Copy Apache WSGI file
+  copy: src=roles/newrelic/files/apache.wsgi dest=/etc/ckan/default/apache.wsgi force=yes mode=0644
+  
+- name: Reload Apache2
+  service: name=apache2 state=reloaded
