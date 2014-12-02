@@ -16,5 +16,5 @@
     - configuration
     - disqus-extension
     - mx
+    - ckanext-more-facets
     - ckanext-harvest
-
