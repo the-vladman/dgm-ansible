@@ -8,7 +8,7 @@
     - libgeos-c1
 
 - name: Install CKAN spatial extension to virtualenv
-  pip: name='git+https://github.com/okfn/ckanext-spatial.git@stable#egg=ckanext-spatial' virtualenv=/usr/lib/ckan/default virtualenv_site_packages=no
+  pip: name='git+https://github.com/ckan/ckanext-spatial.git#egg=ckanext-spatial' virtualenv=/usr/lib/ckan/default virtualenv_site_packages=no
 
 - name: Install Python Requirements
   pip: requirements=/usr/lib/ckan/default/src/ckanext-spatial/pip-requirements.txt virtualenv=/usr/lib/ckan/default virtualenv_site_packages=no

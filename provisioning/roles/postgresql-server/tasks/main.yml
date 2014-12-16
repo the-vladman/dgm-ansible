@@ -67,10 +67,10 @@
 #  command: mv /etc/solr/conf/schema.xml /etc/solr/conf/schema.xml.bak
 
 - name: Replace Solr schema.xml with CKAN schema file
-  copy: src=schema-2.0.xml dest=/etc/solr/conf/schema.xml force=yes
+  copy: src=schema-2.3.xml dest=/etc/solr/conf/schema.xml force=yes
   
 - name: Schema in usr/share
-  copy: src=schema-2.0.xml dest=/usr/share/solr/conf/schema.xml force=yes
+  copy: src=schema-2.3.xml dest=/usr/share/solr/conf/schema.xml force=yes
 
 - name: Restart Jetty Server
   service: name=jetty state=restarted

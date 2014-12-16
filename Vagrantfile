@@ -53,6 +53,7 @@ Vagrant.configure("2") do |config|
       ansible.inventory_path = "vagrant_ansible_inventory_web"
       ansible.verbose = "v"
     end
+    web_config.vm.synced_folder "local/ckanext-dgm", "/usr/lib/ckan/default/src/ckanext-dgm"
   end
   
 end
