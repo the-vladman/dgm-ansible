@@ -1,0 +1,3 @@
+---
+- name: Install CKAN DCAT extension
+  pip: name='git+https://github.com/ckan/ckanext-dcat.git#egg=ckanext-dcat' virtualenv=/usr/lib/ckan/default virtualenv_site_packages=no
