@@ -1,7 +1,12 @@
-<VirtualHost 0.0.0.0:8080>
+<VirtualHost 127.0.0.1:8080>
     ServerName http://catalogo.datos.gob.mx.dev
     ServerAlias http://catalogo.datos.gob.mx.dev
     WSGIScriptAlias / /etc/ckan/default/apache.wsgi
+    
+    <Directory /etc/ckan/default/>
+    Order deny,allow
+    Require all granted
+    </Directory>
 
     # Pass authorization info on (needed for rest api).
     WSGIPassAuthorization On
@@ -13,4 +18,10 @@
 
     ErrorLog /var/log/apache2/ckan_default.error.log
     CustomLog /var/log/apache2/ckan_default.custom.log combined
+
+    <IfModule mod_rpaf.c>
+        RPAFenable On
+        RPAFsethostname On
+        RPAFproxy_ips 127.0.0.1
+    </IfModule>
 </VirtualHost>

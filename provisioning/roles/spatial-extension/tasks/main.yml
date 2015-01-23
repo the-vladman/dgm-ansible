@@ -2,7 +2,7 @@
 - name: Install PostGIS packages
   apt: pkg={{ item }} state=present
   with_items:
-    - postgresql-9.1-postgis
+    - postgresql-9.3-postgis-2.1
     - libxml2-dev
     - libxslt1-dev
     - libgeos-c1

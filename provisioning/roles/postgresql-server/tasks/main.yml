@@ -25,10 +25,10 @@
   postgresql_db: name={{ckan_db}} encoding="UTF-8" lc_collate={{locale}} lc_ctype={{locale}} template=template0
   
 - name: Change pg_hba.conf
-  copy: src=roles/postgresql-server/files/pg_hba.conf dest=/etc/postgresql/9.1/main/pg_hba.conf force=yes
+  copy: src=roles/postgresql-server/files/pg_hba.conf dest=/etc/postgresql/9.3/main/pg_hba.conf force=yes
   
 - name: Enable PostgreSQL remote connection
-  copy: src=roles/postgresql-server/files/postgresql.conf dest=/etc/postgresql/9.1/main/postgresql.conf force=yes
+  copy: src=roles/postgresql-server/files/postgresql.conf dest=/etc/postgresql/9.3/main/postgresql.conf force=yes
   
 - name: Get iptables rules
   shell: iptables -L
