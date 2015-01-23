@@ -5,7 +5,7 @@ Vagrant.configure("2") do |config|
   
     
   config.vm.define :db do |db_config|
-    db_config.vm.box = "trusty64"
+    db_config.vm.box = "ubuntu/trusty64"
     db_config.vm.box_url = "https://atlas.hashicorp.com/ubuntu/boxes/trusty64"
   
     db_config.vm.network :forwarded_port, guest: 8983, host: 8984
@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
   
   
   config.vm.define :storage do |storage_config|
-    storage_config.vm.box = "trusty64"
+    storage_config.vm.box = "ubuntu/trusty64"
     storage_config.vm.box_url = "https://atlas.hashicorp.com/ubuntu/boxes/trusty64"
   
     storage_config.vm.network :forwarded_port, guest: 111, host: 1110
@@ -40,7 +40,7 @@ Vagrant.configure("2") do |config|
   
   
   config.vm.define :web do |web_config|
-    web_config.vm.box = "trusty64"
+    web_config.vm.box = "ubuntu/trusty64"
     web_config.vm.box_url = "https://atlas.hashicorp.com/ubuntu/boxes/trusty64"
     
     web_config.vm.network :forwarded_port, guest: 80, host: 8080
