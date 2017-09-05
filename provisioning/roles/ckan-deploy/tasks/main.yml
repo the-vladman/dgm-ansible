@@ -14,7 +14,7 @@
   copy: src=apache.wsgi dest=/etc/ckan/default/apache.wsgi force=yes mode=0644 
   
 - name: Copy Apache configuration file
-  copy: src=ckan_default dest=/etc/apache2/sites-available/ckan_default force=yes
+  copy: src=ckan_default dest=/etc/apache2/sites-available/ckan_default.conf force=yes
 
 - name: Copy Nginx configuration file
   copy: src=ckan_default_nginx dest=/etc/nginx/sites-available/ckan_default force=yes
@@ -25,12 +25,6 @@
 - name: Enable CKAN nginx
   file: src=/etc/nginx/sites-available/ckan_default dest=/etc/nginx/sites-enabled/ckan_default state=link force=yes 
 
-- name: Reload Apache2
-  service: name=apache2 state=reloaded
- 
-- name: Reload Nginx
-  service: name=nginx state=reloaded
-
 - name: Update NameVirtualPort port
   lineinfile: dest=/etc/apache2/ports.conf regexp='^NameVirtualHost' line='NameVirtualHost *:8080' backrefs=yes
 
@@ -39,6 +33,6 @@
 
 - name: Reload Apache2
   service: name=apache2 state=reloaded
-
+ 
 - name: Reload Nginx
   service: name=nginx state=reloaded

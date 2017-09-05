@@ -6,12 +6,16 @@
     - redis-server
 
 - name: Install CKAN remote harvest extension
-  pip: name='git+https://github.com/okfn/ckanext-harvest.git@stable#egg=ckanext-harvest' virtualenv=/usr/lib/ckan/default virtualenv_site_packages=no
+  pip:
+    name: git+https://github.com/vaquer/ckanext-harvest@dkan#egg=ckanext-harvest
+    virtualenv: /usr/lib/ckan/default
+    virtualenv_site_packages: no
 
 - name: Install CKAN remote harvest Python dependencies
-  pip: requirements=/usr/lib/ckan/default/src/ckan/requirements.txt virtualenv=/usr/lib/ckan/default virtualenv_site_packages=no
+  pip:
+    requirements: /usr/lib/ckan/default/src/ckanext-harvest/pip-requirements.txt
+    virtualenv: /usr/lib/ckan/default
+    virtualenv_site_packages: no
 
-
-
-- name: Creating necessary tables in the database
-  command: chdir=/etc/ckan/default /usr/lib/ckan/default/bin/paster --plugin=ckanext-harvest harvester initdb --config=production.ini
+# - name: Creating necessary tables in the database
+# command: chdir=/etc/ckan/default /usr/lib/ckan/default/bin/paster --plugin=ckanext-harvest harvester initdb --config=production.ini

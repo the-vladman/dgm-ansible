@@ -1,0 +1,5 @@
+- name: Install caknext-sitemap plugin
+  pip:
+    name: git+https://github.com/vaquer/ckanext-sitemap.git#egg=ckanext-sitemap 
+    virtualenv: /usr/lib/ckan/default
+    virtualenv_site_packages: no

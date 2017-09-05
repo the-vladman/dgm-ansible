@@ -3,8 +3,8 @@ proxy_temp_path /tmp/nginx_proxy 1 2;
 
 server {
     client_max_body_size 100M;
-    location / {
-        proxy_pass http://127.0.0.1:8080/;
+    location /busca/ {
+        proxy_pass http://127.0.0.1:8080/busca/;
         proxy_set_header Host $host;
         proxy_cache cache;
         proxy_cache_bypass $cookie_auth_tkt;

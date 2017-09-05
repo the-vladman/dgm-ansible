@@ -1,6 +1,6 @@
 <VirtualHost 0.0.0.0:8080>
-    ServerName http://catalogo.datos.gob.mx.dev
-    ServerAlias http://catalogo.datos.gob.mx.dev
+    ServerName http://datos.gob.mx.dev/busca/
+    ServerAlias http://datos.gob.mx.dev/busca/
     WSGIScriptAlias / /etc/ckan/default/apache.wsgi
 
     # Pass authorization info on (needed for rest api).
@@ -13,4 +13,10 @@
 
     ErrorLog /var/log/apache2/ckan_default.error.log
     CustomLog /var/log/apache2/ckan_default.custom.log combined
+
+    <Directory /etc/ckan/ >
+      Order deny,allow
+      Allow from all
+      Require all granted
+    </Directory>
 </VirtualHost>

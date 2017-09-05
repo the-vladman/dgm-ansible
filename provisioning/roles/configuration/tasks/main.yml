@@ -6,7 +6,32 @@
 
 - name: Set max image upload size
   ini_file: dest=/etc/ckan/default/production.ini section=app:main option=ckan.max_image_size value=10
-  
-- name: Grant privileges on DB
-  sudo_user: postgres
-  postgresql_privs: host={{db.ip}} database={{datastore_default}} roles={{ckan_readonlyuser}} privs=SELECT state=present objs=_table_metadata
+
+- name: Set postgres conexions ckan default
+  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=sqlalchemy.url value=postgres://{{ckan_user}}:{{pg_password}}@{{db.ip}}/{{ckan_db}}
+
+- name: Set postgres datastore conexions
+  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=ckan.datastore.read_url value=postgresql://{{datastore_readonlyuser}}:{{datastore_password}}@{{datastore_ip}}/{{datastore_db}}
+
+- name: Set postgres datastore conexions write
+  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=ckan.datastore.write_url value=postgresql://{{datastore_default}}:{{datastore_password}}@{{datastore_ip}}/{{datastore_db}}
+
+- name: Set correct site_url
+  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=ckan.site_url value=http://datos.gob.mx.dev/busca/
+
+- name: Set solr IP
+  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=solr_url value=http://{{solr_ip}}:{{solr_port}}/solr
+
+- name: Harvester MQ Configs
+  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=ckan.harvest.mq.hostname value={{redis_ip}}
+  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=ckan.harvest.mq.port value={{redis_port}}
+
+- name: Reload Apache2
+  service: name=apache2 state=reloaded
+ 
+- name: Reload Nginx
+  service: name=nginx state=reloaded
+
+#- name: Grant privileges on DB
+#  sudo_user: postgres
+#  postgresql_privs: host={{db.ip}} database={{datastore_default}} roles={{ckan_readonlyuser}} privs=SELECT state=present objs=_table_metadata

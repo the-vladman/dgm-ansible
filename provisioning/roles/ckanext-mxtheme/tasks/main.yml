@@ -1,0 +1,11 @@
+- name: Install ckanext-mxtheme plugin
+  pip:
+    name: git+https://github.com/opintel/ckanext-mxtheme@development#egg=ckanext-mxtheme
+    virtualenv: /usr/lib/ckan/default
+    virtualenv_site_packages: no
+
+- name: Install ckanext-mxtheme dependencies
+  pip:
+    requirements: /usr/lib/ckan/default/src/ckanext-mxtheme/dev-requirements.txt
+    virtualenv: /usr/lib/ckan/default
+    virtualenv_site_packages: no

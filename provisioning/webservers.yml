@@ -11,10 +11,14 @@
     - ckan-install
     - ckan-deploy
     - nfs-client
-    - spatial-extension
+    #- spatial-extension
     - page-tracking-extension
-    - configuration
-    - disqus-extension
-    - mx
+    - ckanext-dcat
     - ckanext-more-facets
+    - ckanext-mxtheme
+    - ckanext-sitemap
     - ckanext-harvest
+    - ckanext-dkan
+    - disqus-extension
+    - configuration
+    #- mx
