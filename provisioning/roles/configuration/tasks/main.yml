@@ -8,13 +8,13 @@
   ini_file: dest=/etc/ckan/default/production.ini section=app:main option=ckan.max_image_size value=10
 
 - name: Set postgres conexions ckan default
-  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=sqlalchemy.url value=postgres://{{ckan_user}}:{{pg_password}}@{{db.ip}}/{{ckan_db}}
+  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=sqlalchemy.url value=postgres://{{ckan_user}}:{{pg_password}}@{{db.ip}}:8003/{{ckan_db}}
 
 - name: Set postgres datastore conexions
-  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=ckan.datastore.read_url value=postgresql://{{datastore_readonlyuser}}:{{datastore_password}}@{{datastore_ip}}/{{datastore_db}}
+  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=ckan.datastore.read_url value=postgresql://{{datastore_readonlyuser}}:{{datastore_password}}@{{datastore_ip}}:8004/{{datastore_db}}
 
 - name: Set postgres datastore conexions write
-  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=ckan.datastore.write_url value=postgresql://{{datastore_default}}:{{datastore_password}}@{{datastore_ip}}/{{datastore_db}}
+  ini_file: dest=/etc/ckan/default/production.ini section=app:main option=ckan.datastore.write_url value=postgresql://{{datastore_default}}:{{datastore_password}}@{{datastore_ip}}:8004/{{datastore_db}}
 
 - name: Set correct site_url
   ini_file: dest=/etc/ckan/default/production.ini section=app:main option=ckan.site_url value=http://datos.gob.mx.dev/busca/
