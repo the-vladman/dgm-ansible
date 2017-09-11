@@ -32,6 +32,12 @@
 - name: Reload Nginx
   service: name=nginx state=reloaded
 
+- name: Install full vim git clone
+  command: git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
+
+- name: Install full vim
+  command: sh ~/.vim_runtime/install_awesome_vimrc.sh
+
 #- name: Grant privileges on DB
 #  sudo_user: postgres
 #  postgresql_privs: host={{db.ip}} database={{datastore_default}} roles={{ckan_readonlyuser}} privs=SELECT state=present objs=_table_metadata
