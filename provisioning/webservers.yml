@@ -9,10 +9,11 @@
     - secrets/dbsecrets.yml
   roles:
     - ckan-install
-    - ckan-deploy
+    - ckan-deploy 
+    - datapusher-install
     - nfs-client
     #- spatial-extension
-    - page-tracking-extension
+    #- page-tracking-extension
     - ckanext-dcat
     - ckanext-more-facets
     - ckanext-mxtheme

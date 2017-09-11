@@ -1,0 +1,54 @@
+
+- name: Install required packages
+  apt: pkg={{ item }} state=present update_cache=yes
+  with_items:
+    - libxml2-dev
+    - libxslt-dev
+    - build-essential
+    - libssl-dev
+    - libffi-dev 
+
+- name: Clone repo datastore
+  git:
+    repo: https://github.com/ckan/datapusher
+    clone: yes
+    dest: /usr/lib/ckan/datapusher/src/
+    version: 0.0.1.2
+
+- name: Install datastore dependencies
+  pip:
+    name: packaging
+    version: 16.8
+    virtualenv: /usr/lib/ckan/datapusher
+
+- name: Install datapusher dependencies
+  pip:
+    name: appdirs
+    version: 1.4.0
+    virtualenv: /usr/lib/ckan/datapusher
+
+- name: Install datapusher dependencies
+  pip:
+    requirements: /usr/lib/ckan/datapusher/src/requirements.txt
+    virtualenv: /usr/lib/ckan/datapusher
+    virtualenv_site_packages: no
+
+- name: Install datapusher
+  pip:
+    name: /usr/lib/ckan/datapusher/src/
+    extra_args: -e
+    virtualenv: /usr/lib/ckan/datapusher
+    virtualenv_site_packages: no
+
+- name: Copiando archivo apache
+  copy: src=roles/datapusher-install/files/datapusher.conf dest=/etc/apache2/sites-available/datapusher.conf force=yes
+
+- name: Copiando archivo settings
+  copy: src=roles/datapusher-install/files/datapusher_settings.py dest=/usr/lib/ckan/datapusher_settings.py force=yes
+
+- name: Adding ports to the configuration Apache
+  command: sh -c 'echo "NameVirtualHost *:8800" >> /etc/apache2/ports.conf'
+  command: sh -c 'echo "Listen 8800" >> /etc/apache2/ports.conf'
+
+- name: Enable CKAN apache
+  command: a2ensite datapusher

@@ -1,3 +1,3 @@
 ---
 - name: Install ckanext-more-facets
-  pip: name='git+https://github.com/mxabierto/ckanext-more-facets.git#egg=ckanext-more-facets' virtualenv=/usr/lib/ckan/default virtualenv_site_packages=no
+  pip: name='git+https://github.com/opintel/ckanext-more-facets.git@test-category#egg=ckanext-more-facets' virtualenv=/usr/lib/ckan/default virtualenv_site_packages=no

@@ -1,7 +1,7 @@
 <VirtualHost 0.0.0.0:8080>
     ServerName http://datos.gob.mx.dev/busca/
     ServerAlias http://datos.gob.mx.dev/busca/
-    WSGIScriptAlias / /etc/ckan/default/apache.wsgi
+    WSGIScriptAlias /busca /etc/ckan/default/apache.wsgi
 
     # Pass authorization info on (needed for rest api).
     WSGIPassAuthorization On
