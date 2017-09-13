@@ -12,10 +12,17 @@ Dependencias:
 
 [Ansible](http://www.ansible.com)
 
+[Docker](https://www.docker.com)
 
 Instrucciones
 ==============
-Una vez instaladas las dependencias, clonado el repositorio, ejecutar desde línea de comandos:
+*Las siguientes instrucciones presuponen una conexion a la VPN*
+Crear un docker-redis local:
+
+```shell
+sudo docker run --name ckan-redis -d -p 6379:6379 redis
+```
+Una vez instaladas las dependencias, clonado el repositorio y creado el REDIS local, ejecutar desde línea de comandos:
 
 ```shell
 $ vagrant up
