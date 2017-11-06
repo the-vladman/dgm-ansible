@@ -1,8 +1,11 @@
-- name: Install ckanext-dcat plugin
-  pip:
-    name: git+https://github.com/vaquer/ckanext-dcat@develop-opi#egg=ckanext-dcat
-    virtualenv: /usr/lib/ckan/default
-    virtualenv_site_packages: no
+- name: Pull ckanext-dcat plugin
+  action: git repo=https://github.com/vaquer/ckanext-dcat dest=/usr/lib/ckan/default/src/ckanext-dcat version=develop-opi
+
+# - name: Install ckanext-dcat plugin
+#   pip:
+#     name: git+https://github.com/vaquer/ckanext-dcat@develop-opi#egg=ckanext-dcat
+#     virtualenv: /usr/lib/ckan/default
+#     virtualenv_site_packages: no
 
 - name: Install dcat requirements
   pip:
