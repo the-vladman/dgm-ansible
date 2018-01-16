@@ -1,5 +1,5 @@
 - name: Pull ckanext-mxtheme plugin
-  action: git repo=https://github.com/opintel/ckanext-mxtheme dest=/usr/lib/ckan/default/src/ckanext-mxtheme version=development
+  action: git repo=https://github.com/mxabierto/ckanext-mxtheme dest=/usr/lib/ckan/default/src/ckanext-mxtheme version=develop
 
 # - name: Install ckanext-mxtheme plugin
 #   pip:
