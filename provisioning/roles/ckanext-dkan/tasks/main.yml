@@ -1,5 +1,9 @@
+- name: Pull CKAN remote DKAN extension
+  action: git repo=https://github.com/mxabierto/ckanext-dkan dest=/usr/lib/ckan/default/src/ckanext-dkan version=develop
+
+
 - name: Install ckanext-dkan plugin
   pip:
-    name: git+https://github.com/vaquer/ckanext-dkan#egg=ckanext-dkan
+    requirements: /usr/lib/ckan/default/src/ckanext-dkan/dev-requirements.txt
     virtualenv: /usr/lib/ckan/default
     virtualenv_site_packages: no
